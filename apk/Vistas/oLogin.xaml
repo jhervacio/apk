@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="apk.Vistas.oLogin">
+    <Grid Background="#101A25">
+        <StackLayout Orientation="Horizontal">
+            <Image Source="https://signoswiki.com/wp-content/uploads/signos-de-mayor-o-menor-que.png"
+                   WidthRequest="20"
+                   TranslationX="10"
+                   TranslationY="-365">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label TextColor="White"
+                   Text="Operativo"
+                   TranslationX="12"
+                   TranslationY="31" />
+            <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
+                   WidthRequest="80"
+                   TranslationX="210"
+                   TranslationY="-360" />
+        </StackLayout>
+        <StackLayout VerticalOptions="Center">
+            <StackLayout HorizontalOptions="Center" WidthRequest="{OnPlatform iOS=300,Android=400}" Orientation="Vertical" Margin="15"  >
+                <Frame
+                    HasShadow="{OnPlatform Android=true,iOS=false}"
+                    Padding="{OnPlatform Android=8,iOS=0}"
+                    CornerRadius="{OnPlatform Android=20}"
+                    >
+                    <Entry
+                    x:Name="txtEmail"
+                    Placeholder="Email"
+                    Keyboard="Email"
+                    MaxLength="25"
+                    Text="{Binding EmailTxt, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                        
+                    />
+                </Frame>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" WidthRequest="400" Orientation="Vertical" >
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="0"></StackLayout>
+                <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=8,iOS=0}"
+                     CornerRadius="{OnPlatform Android=20}"
+                     >
+                    <Entry
+                    x:Name="txtPassword"
+                    Placeholder="Contraseña"
+                    MaxLength="25"
+                    IsPassword="True"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Text="{Binding PasswordTxt, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    
+                    />
+                </Frame>
+            </StackLayout>
+            <Button Text="Sign In"
+                    Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    Padding="90,0,90,0"
+                    FontSize="20"
+                   Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsEnabledTxt}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

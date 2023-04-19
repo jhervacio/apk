@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="apk.Vistas.MenuPrincipal"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Background="#101A25">
+        <Label Margin="40"></Label>
+        <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
+               WidthRequest="200"
+               Margin="40" />
+        <StackLayout VerticalOptions="Center">
+            <Button Text="Administrador"
+                    Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    Padding="50,0,50,0"
+                    x:Name="btn_admin"
+                    Clicked="btn_admin_Clicked"/>
+            <Button Text="Operativo"
+                    Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20" 
+                    HorizontalOptions="Center"
+                    Padding="65,0,65,0"
+                    x:Name="btn_operativo"
+                    Clicked="btn_operativo_Clicked"/>
+            <Button Text="Usuario"
+                    Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    Padding="75,0,75,0" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
+
