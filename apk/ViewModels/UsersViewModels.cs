@@ -174,7 +174,7 @@ namespace apk.ViewModels
 
             this.IsRefreshing = true;
 
-            await Task.Delay(1000); //pausa
+            await Task.Delay(500); //pausa
 
             LoadData();
 

@@ -1,10 +1,5 @@
 ﻿using apk.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,12 +11,22 @@ namespace apk.Vistas
         public oLogin()
         {
             InitializeComponent();
-            BindingContext = new UsersViewModels();
+          //  BindingContext = new UsersViewModels();
+          LoginViewModel a = new LoginViewModel();  
         }
 
-        private void btn_signIn_Clicked(object sender, EventArgs e)
+        private async void btn_signIn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuOperativo());
+            var email = txtEmail.Text;
+            var password = txtPassword.Text;
+
+            var user = await new LoginViewModel().GetUsers(email, password);
+
+            if (user != null)
+            {
+                // El inicio de sesión fue exitoso, navegar a la página principal de la aplicación
+                await Navigation.PushAsync(new MenuOperativo());
+            }
         }
     }
 }

@@ -67,8 +67,9 @@
                     HorizontalOptions="Center"
                     Padding="90,0,90,0"
                     FontSize="20"
-                   Command="{Binding LoginCommand}"
-                            IsEnabled="{Binding IsEnabledTxt}"/>
+                    x:Name="btn_signIn"
+                    Clicked="btn_signIn_Clicked"
+                    />
         </StackLayout>
     </Grid>
 </ContentPage>
