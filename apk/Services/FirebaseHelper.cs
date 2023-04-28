@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using apk.Models;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
+using Xamarin.Essentials;
 
 namespace apk.Services
 {
@@ -27,14 +30,14 @@ namespace apk.Services
               }).ToList();
         }
 
-        /*
-        public async Task AddPerson(string name, int age)
+        public async Task<List<Users>> GetAllUsers2()
         {
-            await firebase
-              .Child("Persons")
-              .PostAsync(new PersonModel() { PersonId = Guid.NewGuid(), NameField = name, AgeField = age});
+            return (await firebase.Child("Users").OnceAsync<Users>()).Select(item => new Users
+            {
+                Correo = item.Object.Correo,
+                Contraseña = item.Object.Contraseña
+            }).ToList();
         }
-        */
        
         public async Task AddUsers(Users _usersModel)
         {
@@ -72,7 +75,35 @@ namespace apk.Services
 
         }
 
+    /*    public async Task<Users> GetUserByEmail(string email)
+        {
+            try
+            {
+                // Obtener una referencia a la lista de usuarios en la base de datos
+                var usersRef = firebase.Child("users");
 
+                // Obtener el usuario con el correo electrónico especificado
+                var snapshot = await usersRef
+                    .OrderBy("Email")
+                    .EqualTo(email)
+                    .OnceAsync<Users>();
+                var user = snapshot.FirstOrDefault()?.Value as Users;
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
+    */
+     /*   public async Task<Users> GetUserByEmail2(string email)
+        {
+            var users = await GetAllUsers2();
+
+            return users.FirstOrDefault(u => u.Correo == email);
+        }*/
         /*
         public async Task<PersonModel> GetPerson(int personId)
         {
@@ -107,6 +138,7 @@ namespace apk.Services
         }
         */
         FirebaseClient firebase;
+     //   private readonly FirebaseClient firebase;
         public FirebaseHelper()
         {
             firebase = new FirebaseClient("https://paltaproyect-default-rtdb.firebaseio.com/");

@@ -1,5 +1,10 @@
 ﻿using apk.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,9 +16,9 @@ namespace apk.Vistas
         public oLogin()
         {
             InitializeComponent();
-          //  BindingContext = new UsersViewModels();
-          LoginViewModel a = new LoginViewModel();  
+            BindingContext = new LoginViewModel();
         }
+
 
         private async void btn_signIn_Clicked(object sender, EventArgs e)
         {

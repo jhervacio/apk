@@ -33,7 +33,7 @@
                     Placeholder="Email"
                     Keyboard="Email"
                     MaxLength="25"
-                    Text="{Binding EmailTxt, Mode=TwoWay}"
+                    Text="{Binding Email, Mode=TwoWay}"
                     IsEnabled="{Binding IsEnabledTxt}"
                     FontSize="{OnPlatform Android=15,iOS=16}"
                         
@@ -53,7 +53,7 @@
                     MaxLength="25"
                     IsPassword="True"
                     FontSize="{OnPlatform Android=15,iOS=16}"
-                    Text="{Binding PasswordTxt, Mode=TwoWay}"
+                    Text="{Binding Password, Mode=TwoWay}"
                     IsEnabled="{Binding IsEnabledTxt}"
                     
                     />
@@ -67,9 +67,12 @@
                     HorizontalOptions="Center"
                     Padding="90,0,90,0"
                     FontSize="20"
+                    Command="{Binding LoginCommand}"
                     x:Name="btn_signIn"
                     Clicked="btn_signIn_Clicked"
+                    
                     />
+         
         </StackLayout>
     </Grid>
 </ContentPage>

@@ -12,7 +12,7 @@ using Xamarin.Essentials;
 
 namespace apk.ViewModels
 {
-    public class LoginViewModel: BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
 
@@ -44,7 +44,6 @@ namespace apk.ViewModels
               await firebase.Child("Users").OnceAsync<Users>();
               var userId = Guid.Parse(Id);
               var user = allUsers.FirstOrDefault(a => a.ID == userId);
-
               if (user != null && user.Correo == email && user.Contraseña == password)
               {
                   return user;
@@ -57,18 +56,18 @@ namespace apk.ViewModels
           }
         */
 
-    /*   public ICommand LoginCommand
-        {
-            get
+        /*   public ICommand LoginCommand
             {
-                return new RelayCommand(GetUsers(string email,string password));
-            }
-        }*/
+                get
+                {
+                    return new RelayCommand(GetUsers(string email,string password));
+                }
+            }*/
 
         public async Task<Users> GetUsers(string email, string password)
         {
             var allUsers = await GetAllUsers();
-            await firebase.Child("Users").OnceAsync<Users>();
+          //  await firebase.Child("Users").OnceAsync<Users>();
             var user = allUsers.FirstOrDefault(a => a.Correo == email && a.Contraseña == password);
 
             if (user != null)

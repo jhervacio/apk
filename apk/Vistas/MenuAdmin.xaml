@@ -5,6 +5,16 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label TextColor="White"
+                   Text="Administrador"
+                   TranslationX="12"
+                   TranslationY="31" />
+                <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
+                   WidthRequest="80"
+                   TranslationX="210"
+                   TranslationY="-360" />
+            </StackLayout>
             <StackLayout>
                 <ListView
                     ItemsSource="{Binding ListViewSource}"
