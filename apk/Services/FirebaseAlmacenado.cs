@@ -1,5 +1,5 @@
-﻿using apk.Vistas.Registro;
-using Firebase.Database;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,49 +15,49 @@ namespace apk.Services
         {
 
             return (await firebase
-              .Child("Siembra")
-              .OnceAsync<Almacenado>()).Select(item => new Siembra
+              .Child("Almacenado")
+              .OnceAsync<Almacenado>()).Select(item => new Almacenado
               {
-                  ID_S = item.Object.ID_S,
-                  Fecha_Siembra = item.Object.Fecha_Siembra,
-                  T_Semilla = item.Object.T_Semilla,
-                  Rot_Tierra = item.Object.Rot_Tierra,
-                  Nro_Lote = item.Object.Nro_Lote,
+                  ID_A = item.Object.ID_A,
+                  Nro_P = item.Object.Nro_P,
+                  Fecha_I = item.Object.Fecha_I,
+                  Fecha_S = item.Object.Fecha_S,
+                  Temperatura = item.Object.Temperatura,
               }).ToList();
         }
 
-        public async Task AddSiembra(Siembra _siembraModel)
+        public async Task AddAlmacenado(Almacenado _AlmacenadoModel)
         {
             await firebase
-            .Child("Siembra")
-            .PostAsync(new Siembra()
+            .Child("Almacenado")
+            .PostAsync(new Almacenado()
             {
-                ID_S = Guid.NewGuid(),
-                Fecha_Siembra = _siembraModel.Fecha_Siembra,
-                Rot_Tierra = _siembraModel.Rot_Tierra,
-                T_Semilla = _siembraModel.T_Semilla,
-                Nro_Lote = _siembraModel.Nro_Lote
+                ID_A = Guid.NewGuid(),
+                Nro_P = _AlmacenadoModel.Nro_P,
+                Fecha_I = _AlmacenadoModel.Fecha_I,
+                Fecha_S = _AlmacenadoModel.Fecha_S,
+                Temperatura = _AlmacenadoModel.Temperatura,
             });
         }
 
-        public async Task UpdateSiembra(Siembra _siembraModel)
+        public async Task UpdateAlmacenado(Almacenado _AlmacenadoModel)
         {
-            var toUpdateSiembra = (await firebase
-              .Child("Siembra")
-              .OnceAsync<Siembra>()).Where(a => a.Object.ID_S == _siembraModel.ID_S).FirstOrDefault();
+            var toUpdateAlmacenado = (await firebase
+              .Child("Almacenado")
+              .OnceAsync<Almacenado>()).Where(a => a.Object.ID_A == _AlmacenadoModel.ID_A).FirstOrDefault();
 
             await firebase
-              .Child("Siembra")
-              .Child(toUpdateSiembra.Key)
-              .PutAsync(new Siembra() { ID_S = _siembraModel.ID_S, Fecha_Siembra = _siembraModel.Fecha_Siembra, Rot_Tierra = _siembraModel.Rot_Tierra, T_Semilla = _siembraModel.Rot_Tierra, Nro_Lote = _siembraModel.Nro_Lote });
+              .Child("Almacenado")
+              .Child(toUpdateAlmacenado.Key)
+              .PutAsync(new Almacenado() { ID_A = _AlmacenadoModel.ID_A, Nro_P = _AlmacenadoModel.Nro_P, Fecha_I = _AlmacenadoModel.Fecha_I, Fecha_S = _AlmacenadoModel.Fecha_S, Temperatura = _AlmacenadoModel.Temperatura });
         }
 
-        public async Task DeleteSiembra(Guid id_s)
+        public async Task DeleteAlmacenado(Guid id_a)
         {
-            var toDeleteSemilla = (await firebase
-              .Child("Siembra")
-              .OnceAsync<Siembra>()).Where(a => a.Object.ID_S == id_s).FirstOrDefault();
-            await firebase.Child("Semilla").Child(toDeleteSemilla.Key).DeleteAsync();
+            var toDeleteAlmacenado = (await firebase
+              .Child("Almacenado")
+              .OnceAsync<Almacenado>()).Where(a => a.Object.ID_A == id_a).FirstOrDefault();
+            await firebase.Child("Almacenado").Child(toDeleteAlmacenado.Key).DeleteAsync();
 
         }
 

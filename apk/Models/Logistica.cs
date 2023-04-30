@@ -5,10 +5,10 @@ using System.Text;
 
 namespace apk.Models
 {
-    public class Almacenado
+    public class Logistica
     {
         [PrimaryKey, AutoIncrement]
-        public Guid ID_A { get; set; }
+        public Guid ID_L { get; set; }
 
         [MaxLength(30)]
         public string Nro_P { get; set; }
@@ -19,7 +19,5 @@ namespace apk.Models
 
         [MaxLength(4)]
         public string Temperatura { get; set; }
-
-
     }
 }

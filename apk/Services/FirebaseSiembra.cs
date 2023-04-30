@@ -57,7 +57,7 @@ namespace apk.Services
             var toDeleteSemilla = (await firebase
               .Child("Siembra")
               .OnceAsync<Siembra>()).Where(a => a.Object.ID_S == id_s).FirstOrDefault();
-            await firebase.Child("Semilla").Child(toDeleteSemilla.Key).DeleteAsync();
+            await firebase.Child("Siembra").Child(toDeleteSemilla.Key).DeleteAsync();
 
         }
 
