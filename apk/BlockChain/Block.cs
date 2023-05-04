@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace apk.BlockChain
@@ -9,11 +15,118 @@ namespace apk.BlockChain
         public byte[] Data { get; }
         public byte[] Hash { get; set; }
         public int Nonce { get; set; }
-        public byte PrevHash { get; set; }
+        public byte[] PrevHash { get; set; }
         public DateTime TimeStamp { get; set; }
     }
-    public class Block
+    public class Block:IBlock
     {
-        byte[] Data { get; set; }
+        public Block(byte[]  data) 
+        {
+            Data = data ?? throw new ArgumentNullException(nameof(data));
+            Nonce = 0;
+            PrevHash = new byte[] { 0x00 };
+            TimeStamp = DateTime.Now;
+        }
+        public byte[] Data { get; }
+        public byte[] Hash { get; set; }
+        public int Nonce { get; set; }
+        public byte[] PrevHash { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public override string ToString()
+        {
+            return $"{BitConverter.ToString(Hash).Replace("-","")} :\n {BitConverter.ToString(PrevHash).Replace("-","")} \n {Nonce} {TimeStamp}"; ;
+        }
+    }
+    public static class BlockExtension
+    {
+        public static byte[] GenerateHash(this IBlock block)
+        {
+            using (SHA512 sha = new SHA512Managed())
+            using (MemoryStream st = new MemoryStream())
+            using (BinaryWriter bw = new BinaryWriter(st))
+            {
+                bw.Write(block.Data);
+                bw.Write(block.Nonce);
+                bw.Write(block.PrevHash);
+                bw.Write(block.TimeStamp.ToString());
+                var s = st.ToArray();
+                return sha.ComputeHash(s);
+            }
+        }
+
+        public static byte[] MineHash(this IBlock block, byte[] difficulty)
+        {
+            if (difficulty == null) throw new ArgumentNullException(nameof(difficulty));
+            byte[] hash = new byte[0];
+            while (!hash.Take(2).SequenceEqual(difficulty))
+            {
+                block.Nonce++;
+                hash = block.GenerateHash();
+            }
+            return hash;
+        }
+
+        public static bool IsValid(this IBlock block) 
+        {
+            var bk = block.GenerateHash();
+            return block.Hash.SequenceEqual(bk);
+        }
+
+        public static bool IsPrevBlock(this IBlock block, IBlock prevBlock)
+        {
+            if (prevBlock == null) throw new ArgumentNullException(nameof(prevBlock));
+            return prevBlock.IsValid() && block.PrevHash.SequenceEqual(prevBlock.Hash);
+        }
+
+        public static bool IsValid(this IEnumerable<IBlock> items)
+        {
+            var enums = items.ToList();
+            return enums.Zip(enums.Skip(1), Tuple.Create).All(block =>
+            block.Item2.IsValid() && block.Item2.IsPrevBlock(block.Item2));
+        }
+    }
+
+    public class BlockChain : IEnumerable<IBlock>
+    {
+        private List<IBlock> _items = new List<IBlock>();
+        public BlockChain(byte[] difficulty, IBlock genesis)
+        {
+            Difficulty = difficulty;
+            genesis.Hash = genesis.MineHash(difficulty); 
+            Items.Add(genesis);
+        }
+        public byte[] Difficulty { get; }
+
+        public void Add(IBlock item)
+        {
+            if(_items.LastOrDefault() != null)
+            {
+                item.PrevHash = _items.LastOrDefault().Hash;
+            }
+            item.Hash = item.MineHash(Difficulty);
+            Items.Add(item);
+        }
+
+        public List<IBlock> Items
+        {
+            get => _items;
+            set => _items = value;  
+        }
+
+        public int Count => _items.Count;   
+        public IBlock this[int index]
+        {
+            get => Items[index];
+            set => Items[index] = value;
+        }
+        IEnumerator<IBlock> IEnumerable<IBlock>.GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
     }
 }
