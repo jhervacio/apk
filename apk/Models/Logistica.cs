@@ -13,11 +13,14 @@ namespace apk.Models
         [MaxLength(30)]
         public string Nro_P { get; set; }
 
-        public DateTime Fecha_I { get; set; }
-
         public DateTime Fecha_S { get; set; }
 
-        [MaxLength(4)]
-        public string Temperatura { get; set; }
+        [MaxLength(30)]
+        public string Lugar_S { get; set; }
+
+        public DateTime Fecha_E { get; set; }
+
+        [MaxLength(30)]
+        public string Lugar_E { get; set; }
     }
 }
