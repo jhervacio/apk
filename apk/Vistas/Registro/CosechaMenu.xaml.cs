@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using apk.ViewModels.Registro.Add;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace apk.Vistas.Registro
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cosecha : ContentPage
+    public partial class CosechaMenu : ContentPage
     {
-        public Cosecha()
+        public CosechaMenu()
         {
             InitializeComponent();
+            BindingContext = new CosechaViewModels();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace apk.Models
         [PrimaryKey, AutoIncrement]
         public Guid ID_S { get; set; }
 
-        public DateTime Fecha_Siembra { get; set; }
+        public string Fecha_Siembra { get; set; }
 
         [MaxLength(30)]
         public string T_Semilla { get; set; }

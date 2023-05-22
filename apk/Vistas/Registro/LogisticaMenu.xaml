@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="apk.Vistas.Registro.LogisticaMenu">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label TextColor="White"
+                   Text="Administrador"
+                   TranslationX="12"
+                   TranslationY="31" />
+                <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
+                   WidthRequest="80"
+                   TranslationX="210"
+                   TranslationY="-360" />
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
+                <Label
+                     Text="Fecha de salida"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="Black"/>
+                <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                    <Entry
+                    Placeholder="Ingrese la Fecha de Salida"
+                    MaxLength="25"
+                    Keyboard="Text"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Text="{Binding Fecha_S_Txt, Mode=TwoWay}"
+                    />
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                    <StackLayout WidthRequest="140">
+                        <Label
+                     Text="Fecha de Llegada"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="Black"/>
+                        <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                            <Entry
+                    Placeholder="Ingrese fecha de llegada"
+                    MaxLength="25"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Keyboard="Text"
+                    Text="{Binding Fecha_E_Txt, Mode=TwoWay}"
+                    />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                    <StackLayout WidthRequest="140">
+                        <Label
+                     Text="Numero de Paquete"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="Black"/>
+                        <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                            <Entry
+                    Placeholder="Ingrese Nro de Paquete"
+                    MaxLength="25"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Keyboard="Email"
+                    Text="{Binding Nro_P_Txt, Mode=TwoWay}"
+                    />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                    <StackLayout WidthRequest="140">
+                        <Label
+                     Text="Lugar de Salida"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="Black"/>
+                        <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                            <Entry
+                    Placeholder="Ingrese Lugar de Salida"
+                    MaxLength="9"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Keyboard="Numeric"
+                    Text="{Binding Lugar_S_Txt, Mode=TwoWay}"
+                    />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                    <StackLayout WidthRequest="140">
+                        <Label
+                     Text="Lugar de Entrada"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="Black"/>
+                        <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                            <Entry
+                    Placeholder="Ingrese Lugar de Entrada"
+                    MaxLength="9"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    Keyboard="Numeric"
+                    Text="{Binding Lugar_E_Txt, Mode=TwoWay}"
+                    />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <StackLayout Grid.Row="8" HorizontalOptions="Center" Orientation="Vertical" >
+                        <Button
+                     Text="Insert"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="{OnPlatform Android=15}"
+                            BackgroundColor="#fcfcfc"
+                            BorderColor="#f2f2f2"
+                            BorderWidth="1.5"
+                            WidthRequest="300"
+                            HeightRequest="50"
+                            CornerRadius="7"
+                            Command="{Binding InsertCommand}"
+                    />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

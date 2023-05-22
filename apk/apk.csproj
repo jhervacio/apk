@@ -29,6 +29,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Vistas\Registro\AlmacenadoMenu.xaml.cs">
+      <DependentUpon>AlmacenadoMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\Registro\CosechaMenu.xaml.cs">
+      <DependentUpon>CosechaMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\Registro\LogisticaMenu.xaml.cs">
+      <DependentUpon>LogisticaMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\Registro\SiembraMenu.xaml.cs">
+      <DependentUpon>SiembraMenu.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Vistas\aLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -47,16 +62,16 @@
     <EmbeddedResource Update="Vistas\oLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\Registro\Almacenado.xaml">
+    <EmbeddedResource Update="Vistas\Registro\AlmacenadoMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\Registro\Cosecha.xaml">
+    <EmbeddedResource Update="Vistas\Registro\CosechaMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\Registro\Logistica.xaml">
+    <EmbeddedResource Update="Vistas\Registro\LogisticaMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\Registro\Siembra.xaml">
+    <EmbeddedResource Update="Vistas\Registro\SiembraMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -11,7 +11,7 @@ namespace apk.Models
         public Guid ID_C { get; set; }
 
         [MaxLength(30)]
-        public DateTime Fecha_C { get; set; }
+        public string Fecha_C { get; set; }
 
         [MaxLength(30)]
         public string Abono { get; set; }
