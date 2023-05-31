@@ -35,12 +35,13 @@ using Nethereum.Contracts;
 using Nethereum.Hex.HexTypes;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
+using System.Collections.Generic;
 
-namespace Nethereum_Web3
+namespace apk.BlockChain
 {
     class Program
     {
-        class ContractService
+        public class ContractService
         {
 
             private readonly Web3 web3;
@@ -49,6 +50,39 @@ namespace Nethereum_Web3
 
             private static readonly HexBigInteger GAS = new HexBigInteger(4600000);
 
+            public struct Sown
+            {
+                public int date { get; set; }
+                public int typeSeed { get; set; }
+                public string rotation { get; set; }
+                public int lotNumber { get; set; }
+            }
+
+            public struct Harvest
+            {
+                public int date { get; set; }
+                public int abono { get; set; }
+                public string dotacion { get; set; }
+                public string madurez { get; set; }
+                public int size { get; set; }
+            }
+
+            public struct Stored
+            {
+                public int packageNumber { get; set; }
+                public int incomeDate { get; set; }
+                public int exitDate { get; set; }
+                public int temperature { get; set; }
+            }
+
+            public struct Logistic
+            {
+                public int packageId { get; set; }
+                public int incomeDate { get; set; }
+                public string incomePlace { get; set; }
+                public int exitDate { get; set; }
+                public string exitPlace { get; set; }
+            }
             public ContractService(string provider, string contractAddress, string abi, string privateKey)
             {
                 this.account = new Account(privateKey);
@@ -59,7 +93,7 @@ namespace Nethereum_Web3
             public string AddFact(string fact)
             {
                 var addFactFunction = contract.GetFunction("add");
-                var txHash = addFactFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), fact)
+                var txHash = addFactFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), fact)//,date
                                 .ConfigureAwait(false)
                                 .GetAwaiter()
                                 .GetResult();
@@ -74,7 +108,6 @@ namespace Nethereum_Web3
 
                 return fact;
             }
-
             public int GetTotalFacts()
             {
                 var getTotalFacts = contract.GetFunction("count");
@@ -82,37 +115,75 @@ namespace Nethereum_Web3
 
                 return task.Result;
             }
-        }
+            public string AddSown(int _date, int _typeSeed, string _rotation, int _lotNumber)
+            {
+                var addSownFunction = contract.GetFunction("insertSown");
+                var txHash = addSownFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _date, _typeSeed, _rotation, _lotNumber)//,date
+                                .ConfigureAwait(false)
+                                .GetAwaiter()
+                                .GetResult();
+                return txHash;
+            }
+            public List<Sown> getSown()
+            {
+                var getFactFunction = contract.GetFunction("getSown");
+                var task = getFactFunction.CallAsync<List<Sown>>();
+                var fact = task.Result;
 
-        static void Main(string[] args)
-        {
-            var provider = "https://ropsten.infura.io/v3/'<PROJECT-ID>'";
-            var contractAddress = "0x6aB06024E4bc1841C7Aa82D6f0833D29343503a6";
-            var privateKey = "0x'<PRIVATE-KEY>'";
-            var abi =
-              "[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"newFact\",\"type\":\"string\"}],\"name\":\"add\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"count\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getFact\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]";
+                return fact;
+            }
+            public string AddHarvest(int _date, int _abono, string _dotacion, string _madurez, int _size)
+            {
+                var addHarvestFunction = contract.GetFunction("insertHarvest");
+                var txHash = addHarvestFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _date, _abono, _dotacion, _madurez, _size)
+                                .ConfigureAwait(false)
+                                .GetAwaiter()
+                                .GetResult();
+                return txHash;
+            }
+            public List<Harvest> getHarvest()
+            {
+                var getFactFunction = contract.GetFunction("getHarvest");
+                var task = getFactFunction.CallAsync<List<Harvest>>();
+                var fact = task.Result;
 
-            ContractService contractService = new ContractService(provider, contractAddress, abi, privateKey);
+                return fact;
+            }
+            public string AddStored(int _packageNumber, int _incomeDate, int _exitDate, int _temperature)
+            {
+                var addStoredFunction = contract.GetFunction("insertStored");
+                var txHash = addStoredFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _packageNumber, _incomeDate, _exitDate, _temperature)//,date
+                                .ConfigureAwait(false)
+                                .GetAwaiter()
+                                .GetResult();
+                return txHash;
+            }
+            public List<Stored> getStored()
+            {
+                var getFactFunction = contract.GetFunction("getStored");
+                var task = getFactFunction.CallAsync<List<Stored>>();
+                var fact = task.Result;
 
-            System.Console.WriteLine($"Stored facts in the contract: {contractService.GetTotalFacts()}");
-            System.Console.WriteLine("Press Any Key To Exit...");
-            System.Console.ReadLine();
+                return fact;
+            }
+            public string AddLogistic(int _packageId, int _incomeDate, string incomePlace, int _exitDate, string _exitPlace)
+            {
+                var addLogisticFunction = contract.GetFunction("insertLogistic");
+                var txHash = addLogisticFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _packageId, _incomeDate, incomePlace, _exitDate, _exitPlace)//,date
+                                .ConfigureAwait(false)
+                                .GetAwaiter()
+                                .GetResult();
+                return txHash;
+            }
+            public List<Logistic> getLogistic()
+            {
+                var getFactFunction = contract.GetFunction("getLogistic");
+                var task = getFactFunction.CallAsync<List<Logistic>>();
+                var fact = task.Result;
 
-            var index = 0;
-            System.Console.WriteLine();
-            System.Console.WriteLine($"Fact {index + 1}: {contractService.GetFact(index)}");
-            System.Console.WriteLine();
-            System.Console.WriteLine("Press Any Key To Exit...");
-            System.Console.WriteLine();
-            System.Console.ReadLine();
+                return fact;
+            }
 
-            var fact = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
-            System.Console.WriteLine();
-            System.Console.WriteLine($"Transaction Hash: {contractService.AddFact(fact)}");
-            System.Console.WriteLine();
-            System.Console.WriteLine("Press Any Key To Exit...");
-            System.Console.WriteLine();
-            System.Console.ReadLine();
         }
     }
 }

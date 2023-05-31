@@ -18,22 +18,22 @@ namespace apk.Vistas
 
         private void btn_siembra_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Siembra());
+            Navigation.PushAsync(new SiembraMenu());
         }
 
         private void btn_cosecha_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Cosecha());
+            Navigation.PushAsync(new CosechaMenu());
         }
 
         private void almacenado_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Almacenado());
+            Navigation.PushAsync(new AlmacenadoMenu());
         }
 
         private void Logistica_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Logistica());
+            Navigation.PushAsync(new LogisticaMenu());
         }
     }
 }

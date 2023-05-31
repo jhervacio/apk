@@ -1,0 +1,464 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getHarvest",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "date",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "abono",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "dotacion",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "madurez",
+								"type": "string"
+							},
+							{
+								"internalType": "uint8",
+								"name": "size",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Traceability.Harvest[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLogistic",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "packageId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "incomeDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "incomePlace",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "exitDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "exitPlace",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Traceability.Logistic[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSown",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "date",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "typeSeed",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "rotation",
+								"type": "string"
+							},
+							{
+								"internalType": "uint32",
+								"name": "lotNumber",
+								"type": "uint32"
+							}
+						],
+						"internalType": "struct Traceability.Sown[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getStored",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "packageNumber",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "incomeDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "exitDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint8",
+								"name": "temperature",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Traceability.Stored[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "harvestArr",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "date",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "abono",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "dotacion",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "madurez",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "size",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_date",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_abono",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "_dotacion",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_madurez",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_size",
+						"type": "uint8"
+					}
+				],
+				"name": "insertHarvest",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_packageId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_incomeDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "incomePlace",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_exitDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_exitPlace",
+						"type": "string"
+					}
+				],
+				"name": "insertLogistic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_date",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_typeSeed",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "_rotation",
+						"type": "string"
+					},
+					{
+						"internalType": "uint32",
+						"name": "_lotNumber",
+						"type": "uint32"
+					}
+				],
+				"name": "insertSown",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_packageNumber",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_incomeDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_exitDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_temperature",
+						"type": "uint8"
+					}
+				],
+				"name": "insertStored",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "logisticArr",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "packageId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "incomeDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "incomePlace",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "exitDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "exitPlace",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "sownArr",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "date",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "typeSeed",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "rotation",
+						"type": "string"
+					},
+					{
+						"internalType": "uint32",
+						"name": "lotNumber",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "storedArr",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "packageNumber",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "incomeDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "exitDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "temperature",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"upc/traceability.sol": "Traceability"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"upc/traceability.sol": {
+			"keccak256": "0xb2db25565df294399e4d71e6c719bbfc9c699a1f7402655046fee1ed33008591",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5564569b88ec07d93da176fac752a699a1f1e8c3296215ca7b9ae8041958cb85",
+				"dweb:/ipfs/QmTG3WQBrer1ntwNuAYAtgdLG9SogmNpfLsYMe59LuP71G"
+			]
+		}
+	},
+	"version": 1
+}
