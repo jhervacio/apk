@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="apk.Vistas.Registro.SiembraMenu">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Background="#101A25">
             <StackLayout Orientation="Horizontal">
                 <Label TextColor="White"
-                   Text="Administrador"
+                   Text="Operativo"
                    TranslationX="12"
                    TranslationY="31" />
                 <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
@@ -19,28 +19,29 @@
                 <Label
                      Text="Fecha de siembra"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                 <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
                      CornerRadius="{OnPlatform Android=7}"
                      >
                     <Entry
-                    Placeholder="965423"
+                    Placeholder="25/04/2022"
                     MaxLength="25"
-                    Keyboard="Text"
+                    Keyboard="Numeric"
+                        x:Name="FechaTxt"
                     FontSize="{OnPlatform Android=15,iOS=16}"
                     Text="{Binding Fecha_S_Txt, Mode=TwoWay}"
                     />
                 </Frame>
             </StackLayout>
             <StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
                         <Label
                      Text="Tipo de Semilla"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -49,6 +50,7 @@
                             <Entry
                     Placeholder="Seleccione la semilla"
                     MaxLength="25"
+                                x:Name="SemillaTxt"
                     FontSize="{OnPlatform Android=15,iOS=16}"
                     Keyboard="Text"
                     Text="{Binding T_SemillaTxt, Mode=TwoWay}"
@@ -56,12 +58,12 @@
                         </Frame>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
                         <Label
                      Text="Rotacion de Tierra"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -70,6 +72,7 @@
                             <Entry
                     Placeholder="Ingrese la rotacion de tierra"
                     MaxLength="25"
+                            x:Name="RotacionTxt"
                     FontSize="{OnPlatform Android=15,iOS=16}"
                     Keyboard="Email"
                     Text="{Binding Rot_TierraTxt, Mode=TwoWay}"
@@ -82,7 +85,7 @@
                         <Label
                      Text="Nro de Lote"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -91,26 +94,28 @@
                             <Entry
                     Placeholder="15"
                     MaxLength="9"
+                                x:Name="LoteTxt"
                     FontSize="{OnPlatform Android=15,iOS=16}"
                     Keyboard="Numeric"
                     Text="{Binding Nro_LoteTxt, Mode=TwoWay}"
+
                     />
                         </Frame>
+                     
                     </StackLayout>
                 </StackLayout>
                 <StackLayout>
+                    
                     <StackLayout Grid.Row="8" HorizontalOptions="Center" Orientation="Vertical" >
                         <Button
-                     Text="Insert"
-                            TextColor="Black"
-                            Font="Montserrat-Medium.otf"
-                            FontSize="{OnPlatform Android=15}"
-                            BackgroundColor="#fcfcfc"
-                            BorderColor="#f2f2f2"
-                            BorderWidth="1.5"
-                            WidthRequest="300"
-                            HeightRequest="50"
-                            CornerRadius="7"
+                     Text="Insert"                     
+                     FontSize="{OnPlatform Android=15}"
+                     Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    Padding="83,0,83,0"
                             Command="{Binding InsertCommand}"
                     />
                     </StackLayout>

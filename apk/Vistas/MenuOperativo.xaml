@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="apk.Vistas.MenuOperativo">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Background="#101A25">
             <StackLayout Orientation="Horizontal">
                 <Label TextColor="White"
-                   Text="Administrador"
+                   Text="Operativo"
                    TranslationX="12"
                    TranslationY="31" />
                 <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
@@ -16,13 +16,13 @@
             </StackLayout>
             <Label Margin="20"></Label>
             <StackLayout VerticalOptions="Center">
-                <Button Text="Siembre"
+                <Button Text="Siembra"
                     Background="#FF1E6E28"
                     TextColor="White"
                     Margin="15"
                     CornerRadius="20"
                     HorizontalOptions="Center"
-                    Padding="50,0,50,0"
+                    Padding="83,0,83,0"
                     x:Name="btn_siembra"
                     Clicked="btn_siembra_Clicked"/>
                 <Button Text="Cosecha"
@@ -31,7 +31,7 @@
                     Margin="15"
                     CornerRadius="20" 
                     HorizontalOptions="Center"
-                    Padding="65,0,65,0"
+                    Padding="82,0,82,0"
                     x:Name="btn_cosecha"
                     Clicked="btn_cosecha_Clicked"/>
                 <Button Text="Almacenado"
@@ -40,7 +40,7 @@
                     Margin="15"
                     CornerRadius="20"
                     HorizontalOptions="Center"
-                    Padding="75,0,75,0"
+                    Padding="65,0,65,0"
                     x:Name="almacenado"
                      Clicked="almacenado_Clicked"/>
                 <Button Text="Logistica"

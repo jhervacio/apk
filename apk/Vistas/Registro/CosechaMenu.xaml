@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="apk.Vistas.Registro.CosechaMenu">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#101A25">
             <StackLayout Orientation="Horizontal">
                 <Label TextColor="White"
-                   Text="Administrador"
+                   Text="Operativo"
                    TranslationX="12"
                    TranslationY="31" />
                 <Image Source="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57588/avocado-emoji-clipart-md.png"
@@ -19,7 +19,7 @@
                 <Label
                      Text="Fecha cosecha"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                 <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -35,12 +35,12 @@
                 </Frame>
             </StackLayout>
             <StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
                         <Label
                      Text="Tipo de Abono"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -56,12 +56,12 @@
                         </Frame>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
                         <Label
                      Text="Dotacion de agua"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -77,12 +77,12 @@
                         </Frame>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
                         <Label
                      Text="Tamaño de palta promedio"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -96,14 +96,14 @@
                     Text="{Binding TamañoTxt, Mode=TwoWay}"
                     />
                         </Frame>
-                    </StackLayout>
+                    </StackLayout >
                 </StackLayout>
-                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="20">
-                    <StackLayout WidthRequest="140">
+                <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal" Spacing="0">
+                    <StackLayout WidthRequest="180">
                         <Label
                      Text="Madurez de palta promedio"
                      FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
+                     TextColor="White"/>
                         <Frame
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
@@ -120,18 +120,17 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout>
+                   
                     <StackLayout Grid.Row="8" HorizontalOptions="Center" Orientation="Vertical" >
                         <Button
-                     Text="Insert"
-                            TextColor="Black"
-                            Font="Montserrat-Medium.otf"
-                            FontSize="{OnPlatform Android=15}"
-                            BackgroundColor="#fcfcfc"
-                            BorderColor="#f2f2f2"
-                            BorderWidth="1.5"
-                            WidthRequest="300"
-                            HeightRequest="50"
-                            CornerRadius="7"
+                          Text="Insert"                     
+                     FontSize="{OnPlatform Android=15}"
+                     Background="#FF1E6E28"
+                    TextColor="White"
+                    Margin="15"
+                    CornerRadius="20"
+                    HorizontalOptions="Center"
+                    Padding="83,0,83,0"
                             Command="{Binding InsertCommand}"
                     />
                     </StackLayout>

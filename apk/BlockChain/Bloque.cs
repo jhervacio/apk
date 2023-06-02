@@ -39,8 +39,6 @@ using System.Collections.Generic;
 
 namespace apk.BlockChain
 {
-    class Program
-    {
         public class ContractService
         {
 
@@ -90,31 +88,6 @@ namespace apk.BlockChain
                 this.contract = web3.Eth.GetContract(abi, contractAddress);
             }
 
-            public string AddFact(string fact)
-            {
-                var addFactFunction = contract.GetFunction("add");
-                var txHash = addFactFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), fact)//,date
-                                .ConfigureAwait(false)
-                                .GetAwaiter()
-                                .GetResult();
-                return txHash;
-            }
-
-            public string GetFact(int index)
-            {
-                var getFactFunction = contract.GetFunction("getFact");
-                var task = getFactFunction.CallAsync<string>(index);
-                var fact = task.Result;
-
-                return fact;
-            }
-            public int GetTotalFacts()
-            {
-                var getTotalFacts = contract.GetFunction("count");
-                var task = getTotalFacts.CallAsync<int>();
-
-                return task.Result;
-            }
             public string AddSown(int _date, int _typeSeed, string _rotation, int _lotNumber)
             {
                 var addSownFunction = contract.GetFunction("insertSown");
@@ -186,4 +159,3 @@ namespace apk.BlockChain
 
         }
     }
-}
