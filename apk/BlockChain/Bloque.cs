@@ -90,6 +90,8 @@ namespace apk.BlockChain
 
             public string AddSown(int _date, int _typeSeed, string _rotation, int _lotNumber)
             {
+                //llamado: contractService.AddSown(15022023, 2, "2 veces", 3)
+
                 var addSownFunction = contract.GetFunction("insertSown");
                 var txHash = addSownFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _date, _typeSeed, _rotation, _lotNumber)//,date
                                 .ConfigureAwait(false)

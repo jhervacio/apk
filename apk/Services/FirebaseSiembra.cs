@@ -26,9 +26,9 @@ namespace apk.Services
               }).ToList();
         }
 
-        public async Task AddSiembra(Siembra _siembraModel)
+        public async Task<FirebaseObject<Siembra>> AddSiembra(Siembra _siembraModel)
         {
-            await firebase
+            return await firebase
             .Child("Siembra")
             .PostAsync(new Siembra()
             {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using apk.Models;
+using Firebase.Database;
 
 namespace apk.ViewModels.Registro.Add
 {
@@ -108,7 +109,8 @@ namespace apk.ViewModels.Registro.Add
                 //AgeField = int.Parse(age),
             };
 
-            await firebaseHelper.AddSiembra(siembra);
+            Guid siembraId = (await firebaseHelper.AddSiembra(siembra)).Object.ID_S;
+
 
             this.IsRefreshing = true;
 

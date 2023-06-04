@@ -22,9 +22,19 @@ namespace apk.Vistas.Registro
         public SiembraMenu()
         {
             InitializeComponent();
-            contractService = new ContractService();
+            contractService = new ContractService( provider,  contractAddress,  abi, privateKey);
             BindingContext = new SiembraViewModels();
-            contractService.AddSown(Convert.ToInt16(FechaTxt.Text),Convert.ToInt16(SemillaTxt.Text),RotacionTxt.Text,Convert.ToInt16(LoteTxt.Text));
+            //contractService.AddSown(15022023, 2, "2 veces", 3)
+            try {
+                int fecha = Convert.ToInt16(FechaTxt.Text);
+                int semilla = Convert.ToInt16(SemillaTxt.Text);
+                string rotacion = Convert.ToString(RotacionTxt.Text);
+                int lote = Convert.ToInt16(LoteTxt.Text);
+                contractService.AddSown(Convert.ToInt16(FechaTxt.Text),Convert.ToInt16(SemillaTxt.Text),RotacionTxt.Text,Convert.ToInt16(LoteTxt.Text));
+            
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
            
         }
     }
