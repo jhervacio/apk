@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+
 namespace apk.ViewModels.Registro.Add
 {
     public class CosechaViewModels :BaseViewModel
@@ -16,6 +17,7 @@ namespace apk.ViewModels.Registro.Add
         FirebaseCosecha firebaseHelper = new FirebaseCosecha();
 
         #region Attributes
+        public string id_s;
         public string fecha_c;
         public string abono;
         public string dotacion;
@@ -29,6 +31,12 @@ namespace apk.ViewModels.Registro.Add
         #endregion
 
         #region Properties
+
+        public string ID_S_Txt
+        {
+            get { return this.id_s; }
+            set { SetValue(ref this.id_s, value); }
+        }
         public string Fecha_C_Txt
         {
             get { return this.fecha_c; }
@@ -106,6 +114,7 @@ namespace apk.ViewModels.Registro.Add
         {
             var cosecha = new Cosecha
             {
+                ID_S = id_s,
                 Fecha_C = fecha_c,
                 Abono = abono,
                 Dotacion = dotacion,
@@ -147,14 +156,44 @@ namespace apk.ViewModels.Registro.Add
             }
 
         }
+
+        public ObservableCollection<Siembra> Siembras { get; set; }
+
+        public async Task<List<Guid>> GetCosechaIDs()
+        {
+            List<Guid> cosechaIDs = new List<Guid>();
+
+            // Aquí obtienes los datos de las tablas de Siembra desde Firebase
+            var cosechas = await firebaseHelper.GetAllCosecha();
+
+            foreach (var cosecha in cosechas)
+            {
+                cosechaIDs.Add(cosecha.ID_C);
+            }
+
+            return cosechaIDs;
+        }
+        public List<Cosecha> CosechaIDs { get; set; } // Lista de Siembra con las ID_S
+        public Cosecha SelectedCosechaID { get; set; }
         #endregion
 
         #region Constructor
         public CosechaViewModels()
         {
             LoadData();
+          //  Siembras = new ObservableCollection<Siembra>();
             // TestListViewBindingAsync();
         }
+
+        //public async Task LoadData()
+        //{
+        //    var siembras = await firebaseHelper.GetAllSiembra();
+        //    Siembras.Clear();
+        //    foreach (var siembra in siembras)
+        //    {
+        //        Siembras.Add(siembra);
+        //    }
+        //}
         #endregion
     }
 

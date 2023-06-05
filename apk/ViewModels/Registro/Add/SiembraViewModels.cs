@@ -143,6 +143,24 @@ namespace apk.ViewModels.Registro.Add
             }
 
         }
+        public async Task<List<Guid>> GetSiembraIDs()
+        {
+            List<Guid> siembraIDs = new List<Guid>();
+
+            // Aquí obtienes los datos de las tablas de Siembra desde Firebase
+            var siembras = await firebaseHelper.GetAllSiembra();
+
+            foreach (var siembra in siembras)
+            {
+                siembraIDs.Add(siembra.ID_S);
+            }
+
+            return siembraIDs;
+        }
+
+        public List<Siembra> SiembraIDs { get; set; } // Lista de Siembra con las ID_S
+        public Siembra SelectedSiembraID { get; set; } // Propiedad para almacenar la ID_S seleccionada
+
         #endregion
 
         #region Constructor

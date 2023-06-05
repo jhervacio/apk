@@ -16,6 +16,7 @@ namespace apk.ViewModels.Registro.Add
         FirebaseAlmacenado firebaseHelper = new FirebaseAlmacenado();
 
         #region Attributes
+        public string id_c;
         public string fecha_i;
         public string fecha_s;
         public string nro_p;
@@ -28,6 +29,12 @@ namespace apk.ViewModels.Registro.Add
         #endregion
 
         #region Properties
+
+        public string ID_C_Txt
+        {
+            get { return this.id_c; }
+            set { SetValue(ref this.id_c, value); }
+        }
         public string Fecha_I_Txt
         {
             get { return this.fecha_i; }
@@ -100,6 +107,7 @@ namespace apk.ViewModels.Registro.Add
         {
             var almacenado = new Almacenado
             {
+                ID_C = id_c,
                 Fecha_I = fecha_i,
                 Fecha_S = fecha_s,
                 Nro_P = nro_p,
@@ -140,6 +148,9 @@ namespace apk.ViewModels.Registro.Add
             }
 
         }
+
+        public ObservableCollection<Cosecha> Cosechas { get; set; }
+
         #endregion
 
         #region Constructor

@@ -19,6 +19,7 @@ namespace apk.Services
               .OnceAsync<Almacenado>()).Select(item => new Almacenado
               {
                   ID_A = item.Object.ID_A,
+                  ID_C = item.Object.ID_C,
                   Nro_P = item.Object.Nro_P,
                   Fecha_I = item.Object.Fecha_I,
                   Fecha_S = item.Object.Fecha_S,
@@ -33,6 +34,7 @@ namespace apk.Services
             .PostAsync(new Almacenado()
             {
                 ID_A = Guid.NewGuid(),
+                ID_C= _AlmacenadoModel.ID_C,
                 Nro_P = _AlmacenadoModel.Nro_P,
                 Fecha_I = _AlmacenadoModel.Fecha_I,
                 Fecha_S = _AlmacenadoModel.Fecha_S,
@@ -49,7 +51,7 @@ namespace apk.Services
             await firebase
               .Child("Almacenado")
               .Child(toUpdateAlmacenado.Key)
-              .PutAsync(new Almacenado() { ID_A = _AlmacenadoModel.ID_A, Nro_P = _AlmacenadoModel.Nro_P, Fecha_I = _AlmacenadoModel.Fecha_I, Fecha_S = _AlmacenadoModel.Fecha_S, Temperatura = _AlmacenadoModel.Temperatura });
+              .PutAsync(new Almacenado() { ID_A = _AlmacenadoModel.ID_A, ID_C=_AlmacenadoModel.ID_C, Nro_P = _AlmacenadoModel.Nro_P, Fecha_I = _AlmacenadoModel.Fecha_I, Fecha_S = _AlmacenadoModel.Fecha_S, Temperatura = _AlmacenadoModel.Temperatura });
         }
 
         public async Task DeleteAlmacenado(Guid id_a)

@@ -14,7 +14,28 @@
                    TranslationX="210"
                    TranslationY="-360" />
             </StackLayout>
-      
+
+            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
+                <Label
+                     Text="ID de Cosecha"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="White"/>
+                <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                    <Picker Title="Seleccione la ID de cosecha" x:Name="cosechaPicker"
+                            SelectedIndexChanged="cosechaPicker_SelectedIndexChanged"
+                            ItemsSource="{Binding CosechaIDs}"
+                            SelectedItem="{Binding ID_C_Txt, Mode=TwoWay}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="ID_C" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
             <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
                 <Label
                      Text="Fecha Ingreso"

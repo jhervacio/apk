@@ -19,6 +19,7 @@ namespace apk.Services
               .OnceAsync<Cosecha>()).Select(item => new Cosecha
               {
                   ID_C = item.Object.ID_C,
+                  ID_S = item.Object.ID_S,
                   Fecha_C = item.Object.Fecha_C,
                   Abono = item.Object.Abono,
                   Dotacion = item.Object.Dotacion,
@@ -34,6 +35,7 @@ namespace apk.Services
             .PostAsync(new Cosecha()
             {
                 ID_C = Guid.NewGuid(),
+                ID_S = _cosechaModel.ID_S,
                 Fecha_C = _cosechaModel.Fecha_C,
                 Abono = _cosechaModel.Abono,
                 Dotacion = _cosechaModel.Dotacion,
@@ -51,7 +53,7 @@ namespace apk.Services
             await firebase
               .Child("Cosecha")
               .Child(toUpdateCosecha.Key)
-              .PutAsync(new Cosecha() { ID_C = _cosechaModel.ID_C, Fecha_C = _cosechaModel.Fecha_C, Abono = _cosechaModel.Abono, Dotacion = _cosechaModel.Dotacion, Tamaño = _cosechaModel.Tamaño, Madurez = _cosechaModel.Madurez });
+              .PutAsync(new Cosecha() { ID_C = _cosechaModel.ID_C, ID_S = _cosechaModel.ID_S, Fecha_C = _cosechaModel.Fecha_C, Abono = _cosechaModel.Abono, Dotacion = _cosechaModel.Dotacion, Tamaño = _cosechaModel.Tamaño, Madurez = _cosechaModel.Madurez });
         }
 
         public async Task DeleteCosecha(Guid id_c)

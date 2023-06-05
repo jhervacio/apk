@@ -15,6 +15,24 @@
                    TranslationY="-360" />
             </StackLayout>
 
+            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
+                <Label Text="ID de Siembra"
+                       FontSize="{OnPlatform Android=13}"
+                       TextColor="White" />
+                <Frame HasShadow="{OnPlatform Android=true, iOS=false}"
+                       Padding="{OnPlatform Android=6, iOS=0}"
+                       CornerRadius="{OnPlatform Android=7}">
+                    <Picker Title="Seleccione la ID de siembra" x:Name="siembraPicker"
+                            SelectedIndexChanged="SiembraPicker_SelectedIndexChanged"
+                            ItemsSource="{Binding SiembraIDs}"
+                            SelectedItem="{Binding ID_S_Txt, Mode=TwoWay}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="ID_S" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
             <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
                 <Label
                      Text="Fecha cosecha"
@@ -34,6 +52,7 @@
                     />
                 </Frame>
             </StackLayout>
+
             <StackLayout>
                 <StackLayout  HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" Spacing="20">
                     <StackLayout WidthRequest="140">
