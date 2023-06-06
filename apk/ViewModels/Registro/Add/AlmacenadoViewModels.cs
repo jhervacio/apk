@@ -151,6 +151,22 @@ namespace apk.ViewModels.Registro.Add
 
         public ObservableCollection<Cosecha> Cosechas { get; set; }
 
+        public async Task<List<Guid>> GetAlmacenadoIDs()
+        {
+            List<Guid> almacenadoIDs = new List<Guid>();
+
+            // Aquí obtienes los datos de las tablas de Siembra desde Firebase
+            var almacenados = await firebaseHelper.GetAllAlmacenado();
+
+            foreach (var almacenado in almacenados)
+            {
+                almacenadoIDs.Add(almacenado.ID_A);
+            }
+
+            return almacenadoIDs;
+        }
+        public List<Almacenado>AlmacenadoIDs { get; set; } // Lista de Siembra con las ID_S
+        public Almacenado SelectedAlmacenadoID { get; set; }
         #endregion
 
         #region Constructor
