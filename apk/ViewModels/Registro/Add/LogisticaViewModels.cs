@@ -16,6 +16,7 @@ namespace apk.ViewModels.Registro.Add
         FirebaseLogistica firebaseHelper = new FirebaseLogistica();
 
         #region Attributes
+        public string id_a;
         public string fecha_s;
         public string fecha_e;
         public string nro_p;
@@ -29,6 +30,12 @@ namespace apk.ViewModels.Registro.Add
         #endregion
 
         #region Properties
+
+        public string ID_A_Txt
+        {
+            get { return this.id_a; }
+            set { SetValue(ref this.id_a, value); }
+        }
         public string Fecha_S_Txt
         {
             get { return this.fecha_s; }
@@ -107,6 +114,7 @@ namespace apk.ViewModels.Registro.Add
         {
             var Logistica = new Logistica
             {
+                ID_A=id_a,
                 Fecha_S = fecha_s,
                 Fecha_E = fecha_e,
                 Nro_P = nro_p,

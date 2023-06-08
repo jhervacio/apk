@@ -19,6 +19,7 @@ namespace apk.Services
               .OnceAsync<Logistica>()).Select(item => new Logistica
               {
                   ID_L = item.Object.ID_L,
+                  ID_A = item.Object.ID_A,
                   Nro_P = item.Object.Nro_P,
                   Fecha_S = item.Object.Fecha_S,
                   Lugar_S= item.Object.Lugar_S,
@@ -34,6 +35,7 @@ namespace apk.Services
             .PostAsync(new Logistica()
             {
                 ID_L = Guid.NewGuid(),
+                ID_A = _LogisticaModel.ID_A,
                 Nro_P = _LogisticaModel.Nro_P,
                 Fecha_S = _LogisticaModel.Fecha_S,
                 Lugar_S = _LogisticaModel.Lugar_S,
@@ -51,7 +53,7 @@ namespace apk.Services
             await firebase
               .Child("Logistica")
               .Child(toUpdateLogistica.Key)
-              .PutAsync(new Logistica() { ID_L = _LogisticaModel.ID_L, Nro_P = _LogisticaModel.Nro_P, Fecha_S = _LogisticaModel.Fecha_S, Lugar_S = _LogisticaModel.Lugar_S, Fecha_E = _LogisticaModel.Fecha_E, Lugar_E=_LogisticaModel.Lugar_E });
+              .PutAsync(new Logistica() { ID_L = _LogisticaModel.ID_L,ID_A=_LogisticaModel.ID_A, Nro_P = _LogisticaModel.Nro_P, Fecha_S = _LogisticaModel.Fecha_S, Lugar_S = _LogisticaModel.Lugar_S, Fecha_E = _LogisticaModel.Fecha_E, Lugar_E=_LogisticaModel.Lugar_E });
         }
 
         public async Task DeleteLogistica(Guid id_l)

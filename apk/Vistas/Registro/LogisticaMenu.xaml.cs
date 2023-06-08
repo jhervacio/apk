@@ -20,7 +20,7 @@ namespace apk.Vistas.Registro
             InitializeComponent();
             BindingContext = new LogisticaViewModels();
             vm = new AlmacenadoViewModels();
-            
+            LoadAlmacenadoIDs();
             
         }
 

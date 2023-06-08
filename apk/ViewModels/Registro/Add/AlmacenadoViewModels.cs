@@ -35,6 +35,8 @@ namespace apk.ViewModels.Registro.Add
             get { return this.id_c; }
             set { SetValue(ref this.id_c, value); }
         }
+
+
         public string Fecha_I_Txt
         {
             get { return this.fecha_i; }

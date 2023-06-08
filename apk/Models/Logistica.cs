@@ -11,6 +11,9 @@ namespace apk.Models
         public Guid ID_L { get; set; }
 
         [MaxLength(30)]
+        public string ID_A { get; set; }
+
+        [MaxLength(30)]
         public string Nro_P { get; set; }
 
         public string Fecha_S { get; set; }

@@ -36,6 +36,7 @@ using Nethereum.Hex.HexTypes;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace apk.BlockChain
 {
@@ -88,15 +89,13 @@ namespace apk.BlockChain
                 this.contract = web3.Eth.GetContract(abi, contractAddress);
             }
 
-            public string AddSown(int _date, int _typeSeed, string _rotation, int _lotNumber)
+            public async Task<string> AddSown(int _date, int _typeSeed, string _rotation, int _lotNumber)
             {
                 //llamado: contractService.AddSown(15022023, 2, "2 veces", 3)
 
                 var addSownFunction = contract.GetFunction("insertSown");
-                var txHash = addSownFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _date, _typeSeed, _rotation, _lotNumber)//,date
-                                .ConfigureAwait(false)
-                                .GetAwaiter()
-                                .GetResult();
+            var txHash = await addSownFunction.SendTransactionAsync(account.Address, GAS, new HexBigInteger(0), _date, _typeSeed, _rotation, _lotNumber);//,date
+                               
                 return txHash;
             }
             public List<Sown> getSown()

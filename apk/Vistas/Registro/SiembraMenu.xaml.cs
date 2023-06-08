@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using apk.BlockChain;
+using Nethereum.Hex.HexTypes;
 
 namespace apk.Vistas.Registro
 {
@@ -25,17 +26,53 @@ namespace apk.Vistas.Registro
             contractService = new ContractService( provider,  contractAddress,  abi, privateKey);
             BindingContext = new SiembraViewModels();
             //contractService.AddSown(15022023, 2, "2 veces", 3)
-            try {
-                int fecha = Convert.ToInt16(FechaTxt.Text);
-                int semilla = Convert.ToInt16(SemillaTxt.Text);
-                string rotacion = Convert.ToString(RotacionTxt.Text);
-                int lote = Convert.ToInt16(LoteTxt.Text);
-                contractService.AddSown(Convert.ToInt16(FechaTxt.Text),Convert.ToInt16(SemillaTxt.Text),RotacionTxt.Text,Convert.ToInt16(LoteTxt.Text));
-            
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+          //  LoadData();
+
+        }
+        //private async void LoadData()
+        //{
+        //    try
+        //    {
+        //        int fecha = Convert.ToInt32(FechaTxt);
+        //        int semilla = Convert.ToInt32(SemillaTxt.Text);
+        //        string rotacion = RotacionTxt.Text;
+        //        int lote = Convert.ToInt32(LoteTxt.Text);
+        //        var txHash = await contractService.AddSown(fecha, semilla, rotacion, lote);
+        //        await DisplayAlert("Transacción Exitosa", $"TxHash: {txHash}", "OK");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
+
+        private async void Btn_insert_Clicked(object sender, EventArgs e)
+        {
+            //    await DisplayAlert("Exito", "contractAddress = 0x65344AF205b6c617dF24945771F9BdcBC8BE2fA1", "siguiente");
+            //    await Navigation.PopAsync();
+            int fecha = Convert.ToInt32(FechaTxt);
+            int semilla = Convert.ToInt32(SemillaTxt.Text);
+            string rotacion = RotacionTxt.Text;
+            int lote = Convert.ToInt32(LoteTxt.Text);
+
+            try
+            {
+                // Llama al método AddSown de ContractService
+                string txHash = await contractService.AddSown(fecha, semilla, rotacion, lote);
+
+                // Muestra el txHash en un cuadro de diálogo o en una nueva ventana
+                await DisplayAlert("Éxito", $"El registro se ha insertado correctamente.\nTxHash: {txHash}", "Aceptar");
+
+                // Opción: Mostrar en una nueva ventana
+                // var nuevaPagina = new NuevaPagina(txHash); // Crea una nueva página pasando el txHash como parámetro si deseas mostrarlo en una nueva ventana
+                // await Navigation.PushAsync(nuevaPagina); // Navega a la nueva página
             }
-           
+            catch (Exception ex)
+            {
+                // Muestra un cuadro de diálogo con el mensaje de error
+                await DisplayAlert("Error", $"Error al insertar el registro: {ex.Message}", "Aceptar");
+            }
+
         }
     }
 }

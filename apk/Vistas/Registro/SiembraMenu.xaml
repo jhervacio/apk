@@ -15,24 +15,10 @@
                    TranslationY="-360" />
             </StackLayout>
 
-            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
-                <Label
-                     Text="Fecha de siembra"
-                     FontSize="{OnPlatform Android=13}"
-                     TextColor="White"/>
-                <Frame
-                     HasShadow="{OnPlatform Android=true,iOS=false}"
-                     Padding="{OnPlatform Android=6,iOS=0}"
-                     CornerRadius="{OnPlatform Android=7}"
-                     >
-                    <Entry
-                    Placeholder="25/04/2022"
-                    MaxLength="25"
-                    Keyboard="Numeric"
-                        x:Name="FechaTxt"
-                    FontSize="{OnPlatform Android=15,iOS=16}"
-                    Text="{Binding Fecha_S_Txt, Mode=TwoWay}"
-                    />
+            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical">
+                <Label Text="Fecha de siembra" FontSize="{OnPlatform Android=13}" TextColor="White" />
+                <Frame HasShadow="{OnPlatform Android=true, iOS=false}" Padding="{OnPlatform Android=6, iOS=0}" CornerRadius="{OnPlatform Android=7}">
+                    <DatePicker x:Name="FechaTxt" Date="{Binding Fecha_S_Txt, Mode=TwoWay}" Format="dd/MM/yyyy" FontSize="{OnPlatform Android=15, iOS=16}" />
                 </Frame>
             </StackLayout>
             <StackLayout>
@@ -116,7 +102,9 @@
                     CornerRadius="20"
                     HorizontalOptions="Center"
                     Padding="83,0,83,0"
+                            x:Name="Btn_insert"
                             Command="{Binding InsertCommand}"
+                            Clicked="Btn_insert_Clicked"
                     />
                     </StackLayout>
                 </StackLayout>
