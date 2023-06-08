@@ -148,6 +148,9 @@ namespace apk.ViewModels.Registro.Add
             }
 
         }
+
+        public ObservableCollection<Almacenado> Almacenados { get; set; }
+    
         #endregion
 
         #region Constructor

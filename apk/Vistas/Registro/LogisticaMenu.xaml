@@ -14,7 +14,26 @@
                    TranslationX="210"
                    TranslationY="-360" />
             </StackLayout>
-
+            <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
+                <Label
+                     Text="ID de Almacenado"
+                     FontSize="{OnPlatform Android=13}"
+                     TextColor="White"/>
+                <Frame
+                     HasShadow="{OnPlatform Android=true,iOS=false}"
+                     Padding="{OnPlatform Android=6,iOS=0}"
+                     CornerRadius="{OnPlatform Android=7}"
+                     >
+                    <Picker Title="Seleccione la ID de almacenado" x:Name="almacenadoPicker"
+                            SelectedIndexChanged="almacenadoPicker_SelectedIndexChanged"
+                            ItemsSource="{Binding AlmacenadoIDs}"
+                            SelectedItem="{Binding ID_A_Txt, Mode=TwoWay}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="ID_A" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                </Frame>
+            </StackLayout>
             <StackLayout HorizontalOptions="Center" WidthRequest="300" Orientation="Vertical" >
                 <Label
                      Text="Fecha de salida"

@@ -30,7 +30,11 @@ namespace apk.Vistas.Registro
 
         private void cosechaPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var selectedCosecha = cosechaPicker.SelectedItem as Cosecha;
+            if (selectedCosecha != null)
+            {
+                // Aquí puedes realizar alguna acción con la siembra seleccionada
+            }
         }
         private async void LoadCosechaIDs()
         {

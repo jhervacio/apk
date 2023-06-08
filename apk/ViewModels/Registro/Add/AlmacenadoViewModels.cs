@@ -121,7 +121,7 @@ namespace apk.ViewModels.Registro.Add
 
             await Task.Delay(500); //pausa
 
-            LoadData();
+             LoadData();
 
             this.IsRefreshing = false;
         }
